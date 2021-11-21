@@ -1,9 +1,14 @@
 import React from 'react'
+import CountryGraph from '../components/CountryGraph'
+import CountryHeader from '../components/CountryHeader'
+import CountryList from '../components/CountryList'
 
 const CountryPage = () => {
     return (
         <div>
-            Country
+            <CountryHeader />
+            <CountryGraph />
+            <CountryList />
         </div>
     )
 }
