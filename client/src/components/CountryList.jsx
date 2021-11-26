@@ -1,19 +1,29 @@
 import React, {useContext, useEffect} from 'react'
 import CountryFinder from '../apis/CountryFinder'
 import { CountriesContext } from '../context/CountriesContext'
-
+import { useHistory } from 'react-router'
 const CountryList = (props) => {
     const {countries, setCountries} = useContext(CountriesContext)
+    let history = useHistory();
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await CountryFinder.get("/");
+                //console.log(response);
                 setCountries(response.data.data.countries);
             } catch (err) {}
         }
 
         fetchData();
     },[])
+    countries.sort(function(a,b){
+        return new Date(b.date_reported) - new Date(a.date_reported);
+    });
+    const countryCopy = countries.slice(0, 50)
+
+    const handleCountrySelect = (country_name) => {
+        history.push(`/countries/${country_name}`)
+    };
 
     return (
         <div className="list-group">
@@ -31,50 +41,23 @@ const CountryList = (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>United States</td>
-                        <td>USA</td>
-                        <td>North America</td>
-                        <td>12345</td>
-                        <td>1928765</td>
-                        <td>73492</td>
-                        <td>1982734</td>
-                        <td>11/17/2021</td>
-                        <td><button className="btn btn-success">View Country</button></td>
-                    </tr>
-                    <tr>
-                        <td>Canada</td>
-                        <td>CAN</td>
-                        <td>North America</td>
-                        <td>12345</td>
-                        <td>1928765</td>
-                        <td>73492</td>
-                        <td>1982734</td>
-                        <td>11/17/2021</td>
-                        <td><button className="btn btn-success">View Country</button></td>
-                    </tr>
-                    <tr>
-                        <td>Mexico</td>
-                        <td>MEX</td>
-                        <td>North America</td>
-                        <td>12345</td>
-                        <td>1928765</td>
-                        <td>73492</td>
-                        <td>1982734</td>
-                        <td>11/17/2021</td>
-                        <td><button className="btn btn-success">View Country</button></td>
-                    </tr>
-                    <tr>
-                        <td>Germany</td>
-                        <td>GER</td>
-                        <td>Europe</td>
-                        <td>12345</td>
-                        <td>1928765</td>
-                        <td>73492</td>
-                        <td>1982734</td>
-                        <td>11/17/2021</td>
-                        <td><button className="btn btn-success">View Country</button></td>
-                    </tr>
+                    {countryCopy.map(country => {
+                        return(
+                        <tr onClick={() => handleCountrySelect(country.country_name)}>
+                            <td>{country.country_name}</td>
+                            <td>{country.country_code}</td>
+                            <td>{country.who_region}</td>
+                            <td>{country.new_cases}</td>
+                            <td>{country.cumulative_cases}</td>
+                            <td>{country.new_deaths}</td>
+                            <td>{country.cumulative_deaths}</td>
+                            <td>{country.date_reported.substr(0,10)}</td>
+                            <td>
+                                <button onClick={() => handleCountrySelect(country.country_name)} className="btn btn-success">View Country</button>
+                            </td>
+                        </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>
