@@ -4,6 +4,7 @@ import Home from "./routes/Home";
 import UpdateCountry from './routes/UpdateCountry';
 import CountryPage from './routes/CountryPage';
 import { CountriesContextProvider } from './context/CountriesContext';
+import AboutPage from './routes/AboutPage';
 
 const App = () => {
     return (
@@ -14,6 +15,7 @@ const App = () => {
                     <Route exact path="/" component={Home}/>
                     <Route exact path="/countries/:id/update" component={UpdateCountry}/>
                     <Route exact path="/countries/:id" component={CountryPage}/>
+                    <Route exact path="/about" component={AboutPage}/>
                     </Switch>
                 </Router>
             </div>

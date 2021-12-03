@@ -24,7 +24,7 @@ const CountryList = (props) => {
     const handleCountrySelect = (country_code) => {
         history.push(`/countries/${country_code}`)
     };
-
+    
     return (
         <div className="list-group">
             <table className="table table-hover table-secondary">

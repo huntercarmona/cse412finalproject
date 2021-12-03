@@ -6,11 +6,13 @@ import CountryList from '../components/CountryList'
 import { CountriesContext } from '../context/CountriesContext'
 import CountryFinder from '../apis/CountryFinder'
 import IndividualCountryList from '../components/IndividualCountryList'
+import Navigation from '../components/Navigation'
 
 
 const CountryPage = () => {
     return (
         <div>
+            <Navigation />
             <CountryGraph/>
             <IndividualCountryList/>
             

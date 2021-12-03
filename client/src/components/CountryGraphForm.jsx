@@ -25,17 +25,10 @@ const CountryGraphForm = () => {
         <div className="mb-4">
             <form action="">
                 <div class="row">
-                    <div className="col">
+                    <div className="col" style={{width: '300px'}}>
                         <label>
                             Select a country to view
                             <Select isMulti={false} options={options} value={value} onChange={changeHandler} components={animatedComponenets} />
-                        </label>
-                    </div>
-                    <div className="col">
-                        <label>Select data to view &nbsp;&nbsp;
-                            <input type="checkbox" name="Cases" onChange={(e)=>setDataOptions(e.target.name)}/>Cases&nbsp;&nbsp;
-                            <input type="checkbox" name="Deaths" onChange={(e)=>setDataOptions(e.target.name)}/>Deaths&nbsp;&nbsp;
-                            <input type="checkbox" name="Vaccinations" onChange={(e)=>setDataOptions(e.target.name)}/>Vaccinations&nbsp;&nbsp;
                         </label>
                     </div>
                     <div className="col">
