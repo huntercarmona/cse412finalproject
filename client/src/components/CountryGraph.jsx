@@ -30,7 +30,8 @@ const CountryGraph = () => {
         return new Date(b.date_reported) - new Date(a.date_reported);
     });
     const selectCopy = selectedCountry.slice(0,50)
-    
+    const selectOneCopy = selectedCountry.slice(0,1)
+    //let name = selectCopy[0].country_name;
     // const data = [];
     // for(let num = 30; num >= 0; num--)
     // {
@@ -41,6 +42,15 @@ const CountryGraph = () => {
     // }
     return (
         <div>
+            <h1>
+            {selectOneCopy.map(country => {
+                        return(
+                        <h1 className="font-weight-light display-1 text-center">
+                            <h2>{country.country_name}</h2>
+                        </h1>
+                        )
+                    })}
+            </h1>
             <ResponsiveContainer width="100%" height={400}>
                 <AreaChart data={selectCopy}>
                     <Area dataKey="new_cases" fill="#FDFD96"/>

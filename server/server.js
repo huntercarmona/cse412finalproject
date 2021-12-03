@@ -31,7 +31,7 @@ app.get("/api/v1/countries", async (req, res) => {
 app.get("/api/v1/countries/:id", async (req, res) => {
     console.log(req.params.id);
     try {
-        const results = await db.query("select * from country where country_name = $1", [req.params.id]);
+        const results = await db.query("select * from country where country_code = $1", [req.params.id]);
         res.status(200).json({
             status: "success",
             results: results.rows.length,

@@ -9,8 +9,11 @@ const AddCountry = () => {
                         <input type="text" className="form-control" placeholder="Country"/>
                     </div>
                     <div className="col">
-                        <input type="text" className="form-control" placeholder=" Country Abbreviation"/>
-                    </div> 
+                        <input type="text" className="form-control" placeholder="Country Code"/>
+                    </div>
+                    <div className="col">
+                        <input type="text" className="form-control" placeholder="WHO Region"/>
+                    </div>
                     <div className="col">
                         <input type="text" className="form-control" placeholder="New cases"/>
                     </div>

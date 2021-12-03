@@ -21,8 +21,8 @@ const CountryList = (props) => {
     });
     const countryCopy = countries.slice(0, 50)
 
-    const handleCountrySelect = (country_name) => {
-        history.push(`/countries/${country_name}`)
+    const handleCountrySelect = (country_code) => {
+        history.push(`/countries/${country_code}`)
     };
 
     return (
@@ -43,7 +43,7 @@ const CountryList = (props) => {
                 <tbody>
                     {countryCopy.map(country => {
                         return(
-                        <tr onClick={() => handleCountrySelect(country.country_name)}>
+                        <tr onClick={() => handleCountrySelect(country.country_code)}>
                             <td>{country.country_name}</td>
                             <td>{country.country_code}</td>
                             <td>{country.who_region}</td>
@@ -53,7 +53,7 @@ const CountryList = (props) => {
                             <td>{country.cumulative_deaths}</td>
                             <td>{country.date_reported.substr(0,10)}</td>
                             <td>
-                                <button onClick={() => handleCountrySelect(country.country_name)} className="btn btn-success">View Country</button>
+                                <button onClick={() => handleCountrySelect(country.country_code)} className="btn btn-success">View Country</button>
                             </td>
                         </tr>
                         )

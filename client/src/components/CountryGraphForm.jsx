@@ -3,10 +3,12 @@ import Select from 'react-select'
 import countryList from 'react-select-country-list'
 import makeAnimated from 'react-select/animated'
 import { Label } from 'recharts';
+import { useHistory, useParams } from 'react-router'
 
 const animatedComponenets= makeAnimated();
 
 const CountryGraphForm = () => {
+    let history = useHistory();
     const [value, setValue] = useState('')
     const [dataOptions, setDataOptions] = useState('')
     const options = useMemo(() => countryList().getData(), [])
@@ -15,7 +17,10 @@ const CountryGraphForm = () => {
         setValue(value)
         console.log(value, dataOptions)
     }
+    const handleSubmit = (value) => {
 
+        history.push(`/countries/${value}`);
+    };
     return (
         <div className="mb-4">
             <form action="">
@@ -23,7 +28,7 @@ const CountryGraphForm = () => {
                     <div className="col">
                         <label>
                             Select a country to view
-                            <Select isMulti={true} options={options} value={value} onChange={changeHandler} components={animatedComponenets} />
+                            <Select isMulti={false} options={options} value={value} onChange={changeHandler} components={animatedComponenets} />
                         </label>
                     </div>
                     <div className="col">
@@ -34,7 +39,7 @@ const CountryGraphForm = () => {
                         </label>
                     </div>
                     <div className="col">
-                        <button className="btn btn-primary">Submit</button>
+                        <button className="btn btn-primary" onClick={() => handleSubmit(value.value)}>Submit</button>
                     </div>
                 </div>
             </form>

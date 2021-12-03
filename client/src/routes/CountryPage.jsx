@@ -11,7 +11,6 @@ import IndividualCountryList from '../components/IndividualCountryList'
 const CountryPage = () => {
     return (
         <div>
-            <CountryHeader />
             <CountryGraph/>
             <IndividualCountryList/>
             
